@@ -2,10 +2,14 @@ import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Button from "../src/components/button/Button";
 import "./App.css";
+import { getTwoHoursWeatherForecast } from "./api/weatherForecastServices";
 
 const DefaultPage = () => <p>Nothing to see here!</p>;
 
 function App() {
+  useEffect(() => {
+    getTwoHoursWeatherForecast();
+  }, []);
   return (
     <div className="App">
       <BrowserRouter>
