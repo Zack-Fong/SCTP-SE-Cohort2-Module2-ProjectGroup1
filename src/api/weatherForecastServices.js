@@ -3,12 +3,12 @@ import {
   getCurrentISOString,
   getRequest,
 } from "../common/common";
-import { TWO_HOURS_WEATHER_FORCAST } from "../common/configuration";
+import { TWO_HOURS_WEATHER_FORECAST } from "../common/configuration";
 
 export function getTwoHoursWeatherForecast() {
   const date_time = getCurrentISOString();
   const url =
-    TWO_HOURS_WEATHER_FORCAST +
+    TWO_HOURS_WEATHER_FORECAST +
     "?" +
     convertObjectToQueryString({
       date_time,
