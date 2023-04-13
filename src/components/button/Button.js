@@ -1,12 +1,10 @@
 import styles from "./Button.module.css";
-import { Link } from "react-router-dom";
 
-function Button({ label, to }) {
+function Button({ label, onClick }) {
   return (
-    <Link to={to} className={styles.button} style={{ textDecoration: "none" }}>
+    <button className={styles.button} onClick={onClick}>
       {label}
-    </Link>
+    </button>
   );
 }
-
 export default Button;
