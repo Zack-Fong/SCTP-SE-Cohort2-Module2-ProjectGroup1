@@ -13,16 +13,25 @@ export function getTwoHoursWeatherForecast() {
     convertObjectToQueryString({
       date_time,
     });
-  console.log(date_time);
-  getRequest(url)
-    .then((response) => {
+
+  return new Promise((resolve) => {
+    getRequest(url)
+    .then((response: TwoHourWeatherForecastResponse) => {
       console.log(
         "Two Hours Weather Forecast Response: ",
-        response.data,
-        response.status
+        response.data
       );
+      resolve({
+          areaMetadata: response.data.area_metadata || [],
+          items: response.data.items || []
+        });
     })
     .catch((error) => {
       console.log("Two Hours Weather Forecast Error: ", error);
+      resolve({
+          areaMetadata: [],
+          items: []
+        });
     });
+  })
 }
