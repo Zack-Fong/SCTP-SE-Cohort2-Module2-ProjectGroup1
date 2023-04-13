@@ -13,10 +13,7 @@ interface TwoHourWeatherForecastItemType {
     forecasts: TwoHourWeatherForecastType[],
     timestamp: string,
     update_timestamp: string,
-    valid_period: {
-        start: "",
-        end: ""
-    }
+    valid_period: ValidPeriodType
 }
 
 interface TwoHourWeatherForecastType {
