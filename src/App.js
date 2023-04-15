@@ -42,13 +42,21 @@ function App() {
             path="/"
             element={
               <>
-                <Button label="2 Hours" onClick={() => {}} />
-                <Button label="24 Hours" onClick={() => {}} />
-                <Button label="4 days" onClick={() => {}} />
+                <Button label="2 Hours" to="/2Hours" />
+                <Button label="24 Hours" to="/24Hours" />
+                <Button label="4 days" to="/4Days" />
               </>
             }
           />
-          <Route path="*" element={<TwoHourScreen />} />
+          <Route
+            path="/2Hours"
+            element={<TwoHourScreen />}
+          />
+          <Route
+            path="/24Hours"
+            element={<TwentyFourHourScreen />}
+          />
+          <Route path="*" element={<SampleScreen />} />
         </Routes>
       </BrowserRouter>
     </div>
