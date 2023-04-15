@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getTwoHoursWeatherForecast } from "../../api/WeatherForecastServices";
 import Button from "../button/Button";
 import { uniqueId } from "lodash";
@@ -32,9 +32,12 @@ function TwoHourScreen() {
     // console.log(products);
   };
 
+  useEffect(() => {
+    twoHourGet();
+  }, []);
+
   return (
     <div>
-      <Button onClick={twoHourGet} />
       <h2>{time.time_start} : {time.time_end}</h2>
       <table className={styles.table}>
         <thead>
