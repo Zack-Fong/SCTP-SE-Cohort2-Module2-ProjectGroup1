@@ -1,35 +1,36 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 import Button from "../src/components/button/Button";
 import SampleScreen from "./components/screens/SampleScreen";
 import "./App.css";
 
 function App() {
-  /*Example To Call Api*/
-  /*
   useEffect(() => {
-    getTwoHoursWeatherForecast().then((twoHoursWeatherForecastResponse) =>
-      console.log(
-        "twoHoursWeatherForecastResponse: ",
-        twoHoursWeatherForecastResponse
-      )
-    );
-
-    getTwentyFourHoursWeatherForecast().then(
-      (twentyFourHoursWeatherForecastResponse) =>
+    /*Example To Call Api*/
+    /*
+      getTwoHoursWeatherForecast().then((twoHoursWeatherForecastResponse) =>
         console.log(
-          "twentyFourHoursWeatherForecastResponse: ",
-          twentyFourHoursWeatherForecastResponse
+          "twoHoursWeatherForecastResponse: ",
+          twoHoursWeatherForecastResponse
         )
-    );
+      );
 
-    getFourDaysWeatherForecast().then((fourDaysWeatherForecastResponse) =>
-      console.log(
-        "fourDaysWeatherForecastResponse: ",
-        fourDaysWeatherForecastResponse
-      )
-    );
+      getTwentyFourHoursWeatherForecast().then(
+        (twentyFourHoursWeatherForecastResponse) =>
+          console.log(
+            "twentyFourHoursWeatherForecastResponse: ",
+            twentyFourHoursWeatherForecastResponse
+          )
+      );
+
+      getFourDaysWeatherForecast().then((fourDaysWeatherForecastResponse) =>
+        console.log(
+          "fourDaysWeatherForecastResponse: ",
+          fourDaysWeatherForecastResponse
+        )
+      );
+      */
   }, []);
-  */
 
   return (
     <div className="App">
