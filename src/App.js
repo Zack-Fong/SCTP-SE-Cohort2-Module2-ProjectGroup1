@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import Button from "../src/components/button/Button";
 import SampleScreen from "./components/screens/SampleScreen";
+import TwoHourScreen from "./components/screens/TwoHourScreen";
+import TwentyFourHourScreen from "./components/screens/TwentyFourHourScreen";
 import "./App.css";
 
 function App() {
@@ -46,7 +48,7 @@ function App() {
               </>
             }
           />
-          <Route path="*" element={<SampleScreen />} />
+          <Route path="*" element={<TwoHourScreen />} />
         </Routes>
       </BrowserRouter>
     </div>
