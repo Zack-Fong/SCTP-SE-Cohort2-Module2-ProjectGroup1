@@ -21,3 +21,13 @@ interface TwoHourWeatherForecastType {
     forecast: string
 }
 
+interface TwoHoursWeatherForecastsActionType {
+    type: string,
+    payload: TwoHoursWeatherForecastsPayloadType
+}
+
+interface TwoHoursWeatherForecastsPayloadType {
+    areaMetadata: AreaMetaDataType[],
+    items: TwoHourWeatherForecastItemType[]
+}
+

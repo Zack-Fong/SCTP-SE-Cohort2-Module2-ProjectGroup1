@@ -7,17 +7,17 @@ import TwentyFourHourScreen from "./components/screens/TwentyFourHourScreen";
 import "./App.css";
 
 function App() {
+  // const content = useSelector(twoHoursAreaMetadataSelector);
+  // const content1 = useSelector(twoHoursItemsSelector);
   useEffect(() => {
     /*Example To Call Api*/
-    /*
-      getTwoHoursWeatherForecast().then((twoHoursWeatherForecastResponse) =>
-        console.log(
-          "twoHoursWeatherForecastResponse: ",
-          twoHoursWeatherForecastResponse
-        )
-      );
-
-      getTwentyFourHoursWeatherForecast().then(
+    // getTwoHoursWeatherForecast().then((twoHoursWeatherForecastResponse) =>
+    //   console.log(
+    //     "twoHoursWeatherForecastResponse: ",
+    //     twoHoursWeatherForecastResponse
+    //   )
+    // );
+    /*getTwentyFourHoursWeatherForecast().then(
         (twentyFourHoursWeatherForecastResponse) =>
           console.log(
             "twentyFourHoursWeatherForecastResponse: ",
@@ -34,6 +34,10 @@ function App() {
       */
   }, []);
 
+  // useEffect(() => {
+  //   console.log("@", content1, content);
+  // }, [content]);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -48,14 +52,8 @@ function App() {
               </>
             }
           />
-          <Route
-            path="/2Hours"
-            element={<TwoHourScreen />}
-          />
-          <Route
-            path="/24Hours"
-            element={<TwentyFourHourScreen />}
-          />
+          <Route path="/2Hours" element={<TwoHourScreen />} />
+          <Route path="/24Hours" element={<TwentyFourHourScreen />} />
           <Route path="*" element={<SampleScreen />} />
         </Routes>
       </BrowserRouter>

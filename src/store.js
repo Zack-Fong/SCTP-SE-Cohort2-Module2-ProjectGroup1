@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import twoHoursWeatherForecastReducer from "./reducers/TwoHoursWeatherForecastReducer";
 
 const store = configureStore({
   reducer: {
-    // todos: todosReducer,
+    twoHoursWeatherForecastReducer: twoHoursWeatherForecastReducer,
   },
 });
 
