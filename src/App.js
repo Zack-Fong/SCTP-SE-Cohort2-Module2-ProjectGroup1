@@ -45,11 +45,11 @@ function App() {
           <Route
             path="/"
             element={
-              <>
+              <div className="button-container">
                 <Button label="2 Hours" to="/2Hours" />
                 <Button label="24 Hours" to="/24Hours" />
                 <Button label="4 days" to="/4Days" />
-              </>
+              </div>
             }
           />
           <Route path="/2Hours" element={<TwoHourScreen />} />

@@ -1,8 +1,38 @@
 import { useState, useEffect } from "react";
 import { getTwoHoursWeatherForecast } from "../../api/WeatherForecastServices";
-import Button from "../button/Button";
+// import Button from "../button/Button";
 import { uniqueId } from "lodash";
 import styles from "./Table.module.css";
+
+// Create a formatDate in [Date: DD MMM YYYY | Time: HH:MM (24hours format)]
+function formatDate(dateString) {
+  const dates = dateString.split(" - ");
+  const startDate = new Date(dates[0]);
+  const endDate = new Date(dates[1]);
+
+  const startDateString = startDate.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+
+  const startTimeString = startDate
+    .toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZoneName: "short",
+    })
+    .replace(/ GMT\+\d+/, "");
+
+  const endTimeString = endDate
+    .toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+    })
+    .replace(/ GMT\+\d+/, "");
+
+  return `Date: ${startDateString} | Time: ${startTimeString} - ${endTimeString} (24hours)`;
+}
 
 function TwoHourScreen() {
   const [products, setProducts] = useState([]);
@@ -38,8 +68,8 @@ function TwoHourScreen() {
 
   return (
     <div>
-      <h2>{time.time_start} : {time.time_end}</h2>
-      <table className={styles.table}>
+      {time && <h2>{formatDate(time.time_start + " - " + time.time_end)}</h2>}
+      <table className={`${styles.table} table-dark table-striped`}>
         <thead>
           <tr>
             <th>Name</th>
