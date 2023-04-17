@@ -11,10 +11,10 @@ import {
 } from "./api/WeatherForecastServices";
 import "./App.css";
 import { useSelector } from "react-redux";
-import { fourDaysItemsSelector } from "./reducers/FourDaysWeatherForecastReducers";
+import { formattedFourDaysItemsSelector } from "./reducers/FourDaysWeatherForecastReducers";
 
 function App() {
-  const fourDaysItems = useSelector(fourDaysItemsSelector);
+  const formattedFourDaysItems = useSelector(formattedFourDaysItemsSelector);
 
   useEffect(() => {
     getTwoHoursWeatherForecast();
@@ -24,8 +24,8 @@ function App() {
 
   /*Example Usage of fourDaysItemsSelector*/
   useEffect(() => {
-    console.log("our Days Items in reducer", fourDaysItems);
-  }, [fourDaysItems]);
+    console.log("Four Days Items in reducer", formattedFourDaysItems);
+  }, [formattedFourDaysItems]);
 
   return (
     <div className="App">
