@@ -110,11 +110,11 @@ function TwentyFourHourScreen() {
                 </td>
                 <td>
                   {" "}
-                  {item.time_start.split(",")[1].trim()}
+                  {item.time_start.split(",")[1]?.trim()}
                   <br />
                   to
                   <br />
-                  {item.time_end.split(",")[1].trim()}
+                  {item.time_end.split(",")[1]?.trim()}
                 </td>
                 <td>{item.west}</td>
                 <td>{item.east}</td>
