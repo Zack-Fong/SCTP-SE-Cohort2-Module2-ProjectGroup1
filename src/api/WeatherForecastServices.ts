@@ -1,3 +1,4 @@
+import { setTwentyFourHoursWeatherForecast } from "../action/TwentyFourHoursWeatherForecastActions";
 import { setTwoHoursWeatherForecast } from "../action/TwoHoursWeatherForecastActions";
 import {
   convertObjectToQueryString,
@@ -27,11 +28,7 @@ export function getTwoHoursWeatherForecast() {
           areaMetadata: response.data.area_metadata || [],
           items: response.data.items || []
         }))
-        // resolve(undefined);
-        resolve({
-          areaMetadata: response.data.area_metadata || [],
-          items: response.data.items || []
-        })
+        resolve(undefined);
       })
       .catch((error) => {
         console.log("Two Hours Weather Forecast Error: ", error);
@@ -39,11 +36,7 @@ export function getTwoHoursWeatherForecast() {
           areaMetadata: [],
           items: []
         }))
-        // resolve(undefined);
-        resolve({
-          areaMetadata: [],
-          items: []
-        });
+        resolve(undefined);
       });
   })
 }
@@ -64,15 +57,17 @@ export function getTwentyFourHoursWeatherForecast() {
           "Twenty Four Hours Weather Forecast Response: ",
           response.data, response.status
         );
-        resolve({
+        store.dispatch(setTwentyFourHoursWeatherForecast({
           items: response.data.items || []
-        });
+        }))
+        resolve(undefined);
       })
       .catch((error) => {
         console.log("Twenty Four Hours Weather Forecast Error: ", error);
-        resolve({
+        store.dispatch(setTwentyFourHoursWeatherForecast({
           items: []
-        });
+        }))
+        resolve(undefined);
       });
   })
 }

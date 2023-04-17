@@ -15,3 +15,12 @@ interface TwentyFourHoursWeatherForecastItemType {
     update_timestamp: string,
     valid_period: ValidPeriodType
 }
+
+interface TwentyFourHoursWeatherForecastsActionType {
+    type: string,
+    payload: TwentyFourHoursWeatherForecastsPayloadType
+}
+
+interface TwentyFourHoursWeatherForecastsPayloadType {
+    items: TwentyFourHoursWeatherForecastItemType[]
+}

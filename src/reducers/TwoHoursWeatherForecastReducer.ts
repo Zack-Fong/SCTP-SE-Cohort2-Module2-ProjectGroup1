@@ -50,5 +50,5 @@ export const twoHoursItemsTimeRangeSelector = createSelector(itemsState, (itemsL
   }
 })
 export const twoHoursItemsForecastsSelector = createSelector(itemsState, (itemsList) => {
-  return itemsList[0].forecasts;
+  return itemsList[0]?.forecasts;
 })

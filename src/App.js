@@ -4,21 +4,18 @@ import Button from "../src/components/button/Button";
 import SampleScreen from "./components/screens/SampleScreen";
 import TwoHourScreen from "./components/screens/TwoHourScreen";
 import TwentyFourHourScreen from "./components/screens/TwentyFourHourScreen";
-import { getTwoHoursWeatherForecast } from "./api/WeatherForecastServices";
+import {
+  getTwentyFourHoursWeatherForecast,
+  getTwoHoursWeatherForecast,
+} from "./api/WeatherForecastServices";
 import "./App.css";
 
 function App() {
   useEffect(() => {
     getTwoHoursWeatherForecast();
+    getTwentyFourHoursWeatherForecast();
     /*Example To Call Api*/
-    /*getTwentyFourHoursWeatherForecast().then(
-        (twentyFourHoursWeatherForecastResponse) =>
-          console.log(
-            "twentyFourHoursWeatherForecastResponse: ",
-            twentyFourHoursWeatherForecastResponse
-          )
-      );
-
+    /*
       getFourDaysWeatherForecast().then((fourDaysWeatherForecastResponse) =>
         console.log(
           "fourDaysWeatherForecastResponse: ",
