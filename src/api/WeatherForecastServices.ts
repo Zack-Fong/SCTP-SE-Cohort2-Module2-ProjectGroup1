@@ -1,3 +1,4 @@
+import { setFourDaysWeatherForecast } from "../action/FourDaysWeatherForecastActions";
 import { setTwentyFourHoursWeatherForecast } from "../action/TwentyFourHoursWeatherForecastActions";
 import { setTwoHoursWeatherForecast } from "../action/TwoHoursWeatherForecastActions";
 import {
@@ -27,7 +28,7 @@ export function getTwoHoursWeatherForecast() {
         store.dispatch(setTwoHoursWeatherForecast({
           areaMetadata: response.data.area_metadata || [],
           items: response.data.items || []
-        }))
+        }));
         resolve(undefined);
       })
       .catch((error) => {
@@ -35,7 +36,7 @@ export function getTwoHoursWeatherForecast() {
         store.dispatch(setTwoHoursWeatherForecast({
           areaMetadata: [],
           items: []
-        }))
+        }));
         resolve(undefined);
       });
   })
@@ -59,14 +60,14 @@ export function getTwentyFourHoursWeatherForecast() {
         );
         store.dispatch(setTwentyFourHoursWeatherForecast({
           items: response.data.items || []
-        }))
+        }));
         resolve(undefined);
       })
       .catch((error) => {
         console.log("Twenty Four Hours Weather Forecast Error: ", error);
         store.dispatch(setTwentyFourHoursWeatherForecast({
           items: []
-        }))
+        }));
         resolve(undefined);
       });
   })
@@ -88,12 +89,18 @@ export function getFourDaysWeatherForecast() {
           "Four Days Weather Forecast Response: ",
           response.data, response.status
         );
+        store.dispatch(setFourDaysWeatherForecast({
+          items: response.data.items || []
+        }));
         resolve({
           items: response.data.items || []
         });
       })
       .catch((error) => {
         console.log("Four Days Weather Forecast Error: ", error);
+        store.dispatch(setFourDaysWeatherForecast({
+          items: []
+        }));
         resolve({
           items: []
         });

@@ -59,13 +59,13 @@ function TwentyFourHourScreen() {
             twentyFourHoursPeriod.map((item) => (
               <tr key={uuidv4()}>
                 <td>
-                  {item.time_start?.split("at")[0]}
+                  {item.time_start}
                   <br />
                   <br />
                   <strong>Till</strong>
                   <br />
                   <br />
-                  {item.time_end?.split("at")[0]}
+                  {item.time_end}
                 </td>
                 <td>{item.west}</td>
                 <td>{item.east}</td>

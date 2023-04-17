@@ -38,7 +38,7 @@ export const twentyFourHoursGeneralSelector = createSelector(itemsState, (twenty
     }
 })
 export const formattedTwentyFourHoursPeriodsSelector = createSelector(itemsState, (twentyFourHoursItemsList) => {
-    const formattedTwentyFourHoursPeriods = twentyFourHoursItemsList && twentyFourHoursItemsList[0]?.periods.map((period: PeriodType) => {
+    const formattedTwentyFourHoursPeriods = twentyFourHoursItemsList && twentyFourHoursItemsList[0]?.periods?.map((period: PeriodType) => {
         return ({
             time_start: new Date(period.time.start).toLocaleString(
                 "en-GB",

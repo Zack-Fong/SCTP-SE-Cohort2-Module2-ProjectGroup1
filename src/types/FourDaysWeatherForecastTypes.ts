@@ -13,3 +13,12 @@ interface FourDaysWeatherForecastItemType {
     timestamp: string,
     update_timestamp: string
 }
+
+interface FourDaysWeatherForecastsActionType {
+    type: string,
+    payload: FourDaysWeatherForecastsPayloadType
+}
+
+interface FourDaysWeatherForecastsPayloadType {
+    items: FourDaysWeatherForecastItemType[]
+}

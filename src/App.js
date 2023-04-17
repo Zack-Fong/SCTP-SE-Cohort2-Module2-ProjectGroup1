@@ -5,25 +5,27 @@ import SampleScreen from "./components/screens/SampleScreen";
 import TwoHourScreen from "./components/screens/TwoHourScreen";
 import TwentyFourHourScreen from "./components/screens/TwentyFourHourScreen";
 import {
+  getFourDaysWeatherForecast,
   getTwentyFourHoursWeatherForecast,
   getTwoHoursWeatherForecast,
 } from "./api/WeatherForecastServices";
 import "./App.css";
+import { useSelector } from "react-redux";
+import { fourDaysItemsSelector } from "./reducers/FourDaysWeatherForecastReducers";
 
 function App() {
+  const fourDaysItems = useSelector(fourDaysItemsSelector);
+
   useEffect(() => {
     getTwoHoursWeatherForecast();
     getTwentyFourHoursWeatherForecast();
-    /*Example To Call Api*/
-    /*
-      getFourDaysWeatherForecast().then((fourDaysWeatherForecastResponse) =>
-        console.log(
-          "fourDaysWeatherForecastResponse: ",
-          fourDaysWeatherForecastResponse
-        )
-      );
-      */
+    getFourDaysWeatherForecast();
   }, []);
+
+  /*Example Usage of fourDaysItemsSelector*/
+  useEffect(() => {
+    console.log("our Days Items in reducer", fourDaysItems);
+  }, [fourDaysItems]);
 
   return (
     <div className="App">
