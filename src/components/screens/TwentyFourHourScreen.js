@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getTwentyFourHoursWeatherForecast } from "../../api/WeatherForecastServices";
-import Button from "../button/Button";
+// import styling from "../../common/styling.css";
 import { uniqueId } from "lodash";
 import styles from "./Table.module.css";
 
@@ -24,8 +24,25 @@ function TwentyFourHourScreen() {
     setGeneral(generalList);
     const periodList = response.items[0].periods.map((item, i) => ({
       ...item,
-      time_start: response.items[0].periods[i].time.start,
-      time_end: response.items[0].periods[i].time.end,
+      time_start: new Date(
+        response.items[0].periods[i].time.start
+      ).toLocaleString("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+      }),
+      time_end: new Date(response.items[0].periods[i].time.end).toLocaleString(
+        "en-GB",
+        {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+        }
+      ),
       west: response.items[0].periods[i].regions.west,
       east: response.items[0].periods[i].regions.east,
       central: response.items[0].periods[i].regions.central,
@@ -71,6 +88,7 @@ function TwentyFourHourScreen() {
       <table className={styles.table}>
         <thead>
           <tr>
+            <th>Date</th>
             <th>Time</th>
             <th>West</th>
             <th>East</th>
@@ -84,7 +102,19 @@ function TwentyFourHourScreen() {
             period.map((item) => (
               <tr key={uniqueId()}>
                 <td>
-                  {item.time_start} : {item.time_end}
+                  {item.time_start.split(",")[0]}
+                  <br />
+                  to
+                  <br />
+                  {item.time_end.split(",")[0]}
+                </td>
+                <td>
+                  {" "}
+                  {item.time_start.split(",")[1].trim()}
+                  <br />
+                  to
+                  <br />
+                  {item.time_end.split(",")[1].trim()}
                 </td>
                 <td>{item.west}</td>
                 <td>{item.east}</td>

@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  transition-property: background-color, color, border-width;
+  transition-duration: 0.3s;
+  transition-timing-function:ease-in-out;
+}
+
