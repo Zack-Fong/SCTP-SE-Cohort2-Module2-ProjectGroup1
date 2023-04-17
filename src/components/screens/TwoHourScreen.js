@@ -1,74 +1,43 @@
 import { useState, useEffect } from "react";
-import { getTwoHoursWeatherForecast } from "../../api/WeatherForecastServices";
-// import Button from "../button/Button";
-import { uniqueId } from "lodash";
+import { useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+import { formatDate } from "../../common/common";
+import {
+  formattedTwoHoursAreaMetadataSelector,
+  twoHoursItemsForecastsSelector,
+  twoHoursItemsTimeRangeSelector,
+} from "../../reducers/TwoHoursWeatherForecastReducer";
 import styles from "./Table.module.css";
 
-// Create a formatDate in [Date: DD MMM YYYY | Time: HH:MM (24hours format)]
-function formatDate(dateString) {
-  const dates = dateString.split(" - ");
-  const startDate = new Date(dates[0]);
-  const endDate = new Date(dates[1]);
-
-  const startDateString = startDate.toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
-
-  const startTimeString = startDate
-    .toLocaleTimeString("en-GB", {
-      hour: "2-digit",
-      minute: "2-digit",
-      timeZoneName: "short",
-    })
-    .replace(/ GMT\+\d+/, "");
-
-  const endTimeString = endDate
-    .toLocaleTimeString("en-GB", {
-      hour: "2-digit",
-      minute: "2-digit",
-    })
-    .replace(/ GMT\+\d+/, "");
-
-  return `Date: ${startDateString} | Time: ${startTimeString} - ${endTimeString} (24hours)`;
-}
-
 function TwoHourScreen() {
-  const [products, setProducts] = useState([]);
-  const [time, setTime] = useState({});
-  const twoHourGet = async () => {
-    const response = await getTwoHoursWeatherForecast();
-    // console.log(response.areaMetadata[0].name)
-    setTime({
-      time_start: response.items[0].valid_period.start,
-      time_end: response.items[0].valid_period.end,
-    });
-    console.log(time);
-    const itemList = [];
-    for (const d of response.areaMetadata) {
-      const item = {
-        id: d.name,
-        latitude: d.label_location.latitude,
-        longitude: d.label_location.longitude,
-      };
-      itemList.push(item);
-    }
-    const newList = itemList.map((item, i) => ({
-      ...item,
-      forecast: response.items[0].forecasts[i].forecast,
-    }));
-    setProducts(newList);
-    // console.log(products);
-  };
+  const [twoHoursWeatherForecasts, setTwoHoursWeatherForecasts] = useState([]);
+  const formattedTwoHoursAreaMetadata = useSelector(
+    formattedTwoHoursAreaMetadataSelector
+  );
+  const twoHoursItemsForecasts = useSelector(twoHoursItemsForecastsSelector);
+  const twoHoursItemsTimeRange = useSelector(twoHoursItemsTimeRangeSelector);
 
   useEffect(() => {
-    twoHourGet();
-  }, []);
+    const twoHoursForecasts = formattedTwoHoursAreaMetadata.map(
+      (twoHoursAreaMetadata, index) => ({
+        ...twoHoursAreaMetadata,
+        forecast: twoHoursItemsForecasts[index].forecast,
+      })
+    );
+    setTwoHoursWeatherForecasts(twoHoursForecasts);
+  }, [formattedTwoHoursAreaMetadata]);
 
   return (
     <div>
-      {time && <h2>{formatDate(time.time_start + " - " + time.time_end)}</h2>}
+      {twoHoursItemsTimeRange && (
+        <h2>
+          {formatDate(
+            twoHoursItemsTimeRange.time_start +
+              " - " +
+              twoHoursItemsTimeRange.time_end
+          )}
+        </h2>
+      )}
       <table className={`${styles.table} table-dark table-striped`}>
         <thead>
           <tr>
@@ -79,13 +48,13 @@ function TwoHourScreen() {
           </tr>
         </thead>
         <tbody>
-          {products &&
-            products.map((item) => (
-              <tr key={uniqueId()}>
-                <td>{item.id}</td>
-                <td>{item.latitude.toFixed(3)}</td>
-                <td>{item.longitude.toFixed(3)}</td>
-                <td>{item.forecast}</td>
+          {twoHoursWeatherForecasts &&
+            twoHoursWeatherForecasts.map((twoHoursWeatherForecast) => (
+              <tr key={uuidv4()}>
+                <td>{twoHoursWeatherForecast.id}</td>
+                <td>{twoHoursWeatherForecast.latitude.toFixed(3)}</td>
+                <td>{twoHoursWeatherForecast.longitude.toFixed(3)}</td>
+                <td>{twoHoursWeatherForecast.forecast}</td>
               </tr>
             ))}
         </tbody>

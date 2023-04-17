@@ -4,19 +4,13 @@ import Button from "../src/components/button/Button";
 import SampleScreen from "./components/screens/SampleScreen";
 import TwoHourScreen from "./components/screens/TwoHourScreen";
 import TwentyFourHourScreen from "./components/screens/TwentyFourHourScreen";
+import { getTwoHoursWeatherForecast } from "./api/WeatherForecastServices";
 import "./App.css";
 
 function App() {
-  // const content = useSelector(twoHoursAreaMetadataSelector);
-  // const content1 = useSelector(twoHoursItemsSelector);
   useEffect(() => {
+    getTwoHoursWeatherForecast();
     /*Example To Call Api*/
-    // getTwoHoursWeatherForecast().then((twoHoursWeatherForecastResponse) =>
-    //   console.log(
-    //     "twoHoursWeatherForecastResponse: ",
-    //     twoHoursWeatherForecastResponse
-    //   )
-    // );
     /*getTwentyFourHoursWeatherForecast().then(
         (twentyFourHoursWeatherForecastResponse) =>
           console.log(
@@ -33,10 +27,6 @@ function App() {
       );
       */
   }, []);
-
-  // useEffect(() => {
-  //   console.log("@", content1, content);
-  // }, [content]);
 
   return (
     <div className="App">

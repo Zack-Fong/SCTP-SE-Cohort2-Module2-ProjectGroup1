@@ -55,3 +55,33 @@ export function getCurrentDateString() {
 function getRandomArbitrary(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
+// Create a formatDate in [Date: DD MMM YYYY | Time: HH:MM (24hours format)]
+export function formatDate(dateString) {
+  const dates = dateString.split(" - ");
+
+  const startDate = new Date(dates[0]);
+  const endDate = new Date(dates[1]);
+
+  const startDateString = startDate.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+
+  const startTimeString = startDate
+    .toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZoneName: "short",
+    })
+    .replace(/ GMT\+\d+/, "");
+
+  const endTimeString = endDate
+    .toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+    })
+    .replace(/ GMT\+\d+/, "");
+
+  return `Date: ${startDateString} | Time: ${startTimeString} - ${endTimeString} (24hours)`;
+}
