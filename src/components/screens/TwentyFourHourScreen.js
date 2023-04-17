@@ -5,6 +5,7 @@ import {
   twentyFourHoursGeneralSelector,
 } from "../../reducers/TwentyFourHoursWeatherForecastReducer";
 import styles from "./Table.module.css";
+import TableGeneral from "../table/TableGeneral"
 
 function TwentyFourHourScreen() {
   const twentyFourHoursGeneral = useSelector(twentyFourHoursGeneralSelector);
@@ -14,35 +15,7 @@ function TwentyFourHourScreen() {
 
   return (
     <div>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>Forecast</th>
-            <th>Relative Humidity</th>
-            <th>Temperature</th>
-            <th>Wind Speed</th>
-            <th>Wind Direction</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{twentyFourHoursGeneral.forecast}</td>
-            <td>
-              {twentyFourHoursGeneral.relative_humidity_low} :{" "}
-              {twentyFourHoursGeneral.relative_humidity_high}
-            </td>
-            <td>
-              {twentyFourHoursGeneral.temperature_low} :{" "}
-              {twentyFourHoursGeneral.temperature_high}
-            </td>
-            <td>
-              {twentyFourHoursGeneral.wind_speed_low} :{" "}
-              {twentyFourHoursGeneral.wind_speed_high}
-            </td>
-            <td>{twentyFourHoursGeneral.wind_direction}</td>
-          </tr>
-        </tbody>
-      </table>
+      <TableGeneral generalForecast={twentyFourHoursGeneral}/>
       <table className={styles.table}>
         <thead>
           <tr>
