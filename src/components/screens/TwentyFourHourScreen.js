@@ -46,8 +46,7 @@ function TwentyFourHourScreen() {
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Time</th>
+            <th>Date & Time</th>
             <th>West</th>
             <th>East</th>
             <th>Central</th>
@@ -62,17 +61,11 @@ function TwentyFourHourScreen() {
                 <td>
                   {item.time_start?.split("at")[0]}
                   <br />
-                  to
+                  <br />
+                  <strong>Till</strong>
+                  <br />
                   <br />
                   {item.time_end?.split("at")[0]}
-                </td>
-                <td>
-                  {" "}
-                  {item.time_start?.split("at")[1]?.trim()}
-                  <br />
-                  to
-                  <br />
-                  {item.time_end?.split("at")[1]?.trim()}
                 </td>
                 <td>{item.west}</td>
                 <td>{item.east}</td>
