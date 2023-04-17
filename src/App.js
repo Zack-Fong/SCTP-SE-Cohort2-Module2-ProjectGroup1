@@ -4,28 +4,20 @@ import Button from "../src/components/button/Button";
 import SampleScreen from "./components/screens/SampleScreen";
 import TwoHourScreen from "./components/screens/TwoHourScreen";
 import TwentyFourHourScreen from "./components/screens/TwentyFourHourScreen";
+import FourDayScreen from "./components/screens/FourDayScreen";
 import {
   getFourDaysWeatherForecast,
   getTwentyFourHoursWeatherForecast,
   getTwoHoursWeatherForecast,
 } from "./api/WeatherForecastServices";
 import "./App.css";
-import { useSelector } from "react-redux";
-import { fourDaysItemsSelector } from "./reducers/FourDaysWeatherForecastReducers";
 
 function App() {
-  const fourDaysItems = useSelector(fourDaysItemsSelector);
-
   useEffect(() => {
     getTwoHoursWeatherForecast();
     getTwentyFourHoursWeatherForecast();
     getFourDaysWeatherForecast();
   }, []);
-
-  /*Example Usage of fourDaysItemsSelector*/
-  useEffect(() => {
-    console.log("our Days Items in reducer", fourDaysItems);
-  }, [fourDaysItems]);
 
   return (
     <div className="App">
@@ -43,6 +35,7 @@ function App() {
           />
           <Route path="/2Hours" element={<TwoHourScreen />} />
           <Route path="/24Hours" element={<TwentyFourHourScreen />} />
+          <Route path="/4Days" element={<FourDayScreen />} />
           <Route path="*" element={<SampleScreen />} />
         </Routes>
       </BrowserRouter>
