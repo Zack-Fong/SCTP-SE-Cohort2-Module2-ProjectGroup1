@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/SCTP-SE-Cohort2-Module2-ProjectGroup1/static/css/main.890b6ba0.css",
+    "main.js": "/SCTP-SE-Cohort2-Module2-ProjectGroup1/static/js/main.1ec9f7e6.js",
+    "index.html": "/SCTP-SE-Cohort2-Module2-ProjectGroup1/index.html",
+    "main.890b6ba0.css.map": "/SCTP-SE-Cohort2-Module2-ProjectGroup1/static/css/main.890b6ba0.css.map",
+    "main.1ec9f7e6.js.map": "/SCTP-SE-Cohort2-Module2-ProjectGroup1/static/js/main.1ec9f7e6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.890b6ba0.css",
+    "static/js/main.1ec9f7e6.js"
+  ]
+}
