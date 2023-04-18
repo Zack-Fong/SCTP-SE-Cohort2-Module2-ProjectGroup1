@@ -52,10 +52,6 @@ function App() {
             <Route path="/2Hours" element={<TwoHourScreen />} />
             <Route path="/24Hours" element={<TwentyFourHourScreen />} />
             <Route path="/4days" element={<FourDayScreen />} />
-            <Route
-              path="*"
-              element={<div>You have entered an invalid address</div>}
-            />
           </Routes>
         </BrowserRouter>
       )}
