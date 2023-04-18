@@ -1,22 +1,20 @@
-import styles from "./Table.module.css";
+import tableStyles from "./Table.module.css";
 
-function TableGeneral({generalForecast}) {
+function TableGeneral({generalForecast, generalHeaders}) {
     return (
-        <table className={styles.table}>
+        <table className={tableStyles.table}>
         <thead>
           <tr>
-            {/* {Object.keys(generalForecast).map((item, i) => (
-                <th key={i}>{item}</th>
-            ))} */}
-            <th>Forecast</th>
-            <th>Relative Humidity</th>
-            <th>Temperature</th>
-            <th>Wind Speed</th>
-            <th>Wind Direction</th>
+            {generalHeaders.map((item) => {
+              return <th>{item}</th>
+            })}
           </tr>
         </thead>
         <tbody>
-        <tr>
+        {generalForecast &&
+          generalForecast.map((generalForecast) => (
+            <tr>
+              {generalForecast.date && <td>{generalForecast.date}</td>}
             <td>{generalForecast.forecast}</td>
             <td>
               {generalForecast.relative_humidity_low} :{" "}
@@ -32,6 +30,7 @@ function TableGeneral({generalForecast}) {
             </td>
             <td>{generalForecast.wind_direction}</td>
           </tr>
+          ))}
         </tbody>
       </table>
     )

@@ -1,18 +1,14 @@
 import { v4 as uuidv4 } from "uuid";
-import styles from "./Table.module.css";
+import tableStyles from "./Table.module.css";
 
-function TablePeriod({ periodForecast }) {
+function TablePeriod({ periodForecast, periodHeaders }) {
   return (
-    <table className={`${styles.table} table-dark table-striped`}>
+    <table className={tableStyles.table}>
       <thead>
         <tr>
-          {Object.keys(periodForecast[0]).map((item, i) => (
-            <th key={i}>{item}</th>
-          ))}
-          {/* <th>Name</th>
-          <th>Latitude</th>
-          <th>Longitude</th>
-          <th>Forecast</th> */}
+          {periodHeaders.map((item) => {
+              return <th>{item}</th>
+            })}
         </tr>
       </thead>
       <tbody>
@@ -22,10 +18,6 @@ function TablePeriod({ periodForecast }) {
               {Object.keys(periodForecast).map((item, i) => (
                 <td key={i}>{periodForecast[item]}</td>
               ))}
-              {/* <td>{twoHoursWeatherForecast.id}</td>
-              <td>{twoHoursWeatherForecast.latitude.toFixed(3)}</td>
-              <td>{twoHoursWeatherForecast.longitude.toFixed(3)}</td>
-              <td>{twoHoursWeatherForecast.forecast}</td> */}
             </tr>
           ))}
       </tbody>

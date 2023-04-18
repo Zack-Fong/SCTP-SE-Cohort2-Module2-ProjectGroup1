@@ -30,9 +30,9 @@ export const formattedTwoHoursAreaMetadataSelector = createSelector(areaMetadata
 
   for (const areaMetadata of areaMetadataList) {
     formattedAreaMetadataList.push({
-      id: areaMetadata.name,
-      latitude: areaMetadata.label_location.latitude,
-      longitude: areaMetadata.label_location.longitude,
+      location: areaMetadata.name,
+      latitude: areaMetadata.label_location.latitude.toFixed(3),
+      longitude: areaMetadata.label_location.longitude.toFixed(3),
     });
   }
 

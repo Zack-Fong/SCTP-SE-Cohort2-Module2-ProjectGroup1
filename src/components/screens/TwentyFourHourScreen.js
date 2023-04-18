@@ -1,55 +1,44 @@
 import { useSelector } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
 import {
   formattedTwentyFourHoursPeriodsSelector,
   twentyFourHoursGeneralSelector,
 } from "../../reducers/TwentyFourHoursWeatherForecastReducer";
-import tableStyles from "./Table.module.css";
 import TableGeneral from "../table/TableGeneral";
+import TablePeriod from "../table/TablePeriod";
 
 function TwentyFourHourScreen() {
   const twentyFourHoursGeneral = useSelector(twentyFourHoursGeneralSelector);
   const twentyFourHoursPeriod = useSelector(
     formattedTwentyFourHoursPeriodsSelector
   );
+  const twentyFourHourGeneralHeaders = [
+    "Forecast",
+    "Relative Humidity (low : high)",
+    "Temperature (low : high)",
+    "Wind Speed (low : high)",
+    "Wind Direction",
+  ];
+  const twentyFourHourPeriodHeaders = [
+    "Start Date & Time",
+    "End Date & Time",
+    "West",
+    "East",
+    "Central",
+    "South",
+    "North",
+  ];
 
   return (
     <div>
       <p>Twenty Four Hours Weather Forecast</p>
-      <TableGeneral generalForecast={twentyFourHoursGeneral} />
-      <table className={tableStyles.table}>
-        <thead>
-          <tr>
-            <th>Date & Time</th>
-            <th>West</th>
-            <th>East</th>
-            <th>Central</th>
-            <th>South</th>
-            <th>North</th>
-          </tr>
-        </thead>
-        <tbody>
-          {twentyFourHoursPeriod &&
-            twentyFourHoursPeriod.map((item) => (
-              <tr key={uuidv4()}>
-                <td>
-                  {item.time_start}
-                  <br />
-                  <br />
-                  <strong>Till</strong>
-                  <br />
-                  <br />
-                  {item.time_end}
-                </td>
-                <td>{item.west}</td>
-                <td>{item.east}</td>
-                <td>{item.central}</td>
-                <td>{item.south}</td>
-                <td>{item.north}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+      <TableGeneral
+        generalForecast={twentyFourHoursGeneral}
+        generalHeaders={twentyFourHourGeneralHeaders}
+      />
+      <TablePeriod
+        periodForecast={twentyFourHoursPeriod}
+        periodHeaders={twentyFourHourPeriodHeaders}
+      />
     </div>
   );
 }
