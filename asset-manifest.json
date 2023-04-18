@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/SCTP-SE-Cohort2-Module2-ProjectGroup1/static/css/main.890b6ba0.css",
-    "main.js": "/SCTP-SE-Cohort2-Module2-ProjectGroup1/static/js/main.a5953683.js",
+    "main.css": "/SCTP-SE-Cohort2-Module2-ProjectGroup1/static/css/main.0e62a2bf.css",
+    "main.js": "/SCTP-SE-Cohort2-Module2-ProjectGroup1/static/js/main.62ba4050.js",
     "index.html": "/SCTP-SE-Cohort2-Module2-ProjectGroup1/index.html",
-    "main.890b6ba0.css.map": "/SCTP-SE-Cohort2-Module2-ProjectGroup1/static/css/main.890b6ba0.css.map",
-    "main.a5953683.js.map": "/SCTP-SE-Cohort2-Module2-ProjectGroup1/static/js/main.a5953683.js.map"
+    "main.0e62a2bf.css.map": "/SCTP-SE-Cohort2-Module2-ProjectGroup1/static/css/main.0e62a2bf.css.map",
+    "main.62ba4050.js.map": "/SCTP-SE-Cohort2-Module2-ProjectGroup1/static/js/main.62ba4050.js.map"
   },
   "entrypoints": [
-    "static/css/main.890b6ba0.css",
-    "static/js/main.a5953683.js"
+    "static/css/main.0e62a2bf.css",
+    "static/js/main.62ba4050.js"
   ]
 }
