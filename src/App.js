@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Button from "../src/components/button/Button";
 import SampleScreen from "./components/screens/SampleScreen";
 import TwoHourScreen from "./components/screens/TwoHourScreen";
+import FourDayScreen from "./components/screens/FourDayScreen";
 import TwentyFourHourScreen from "./components/screens/TwentyFourHourScreen";
 import {
   getFourDaysWeatherForecast,
@@ -43,6 +44,7 @@ function App() {
           />
           <Route path="/2Hours" element={<TwoHourScreen />} />
           <Route path="/24Hours" element={<TwentyFourHourScreen />} />
+          <Route path="/4days" element={<FourDayScreen />} />
           <Route path="*" element={<SampleScreen />} />
         </Routes>
       </BrowserRouter>
