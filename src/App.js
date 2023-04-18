@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "../src/components/button/Button";
 import TwoHourScreen from "./components/screens/TwoHourScreen";
@@ -34,7 +34,7 @@ function App() {
           <div className="spinner"></div>
         </div>
       ) : (
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route
               path="/"
@@ -52,8 +52,12 @@ function App() {
             <Route path="/2Hours" element={<TwoHourScreen />} />
             <Route path="/24Hours" element={<TwentyFourHourScreen />} />
             <Route path="/4days" element={<FourDayScreen />} />
+            <Route
+              path="*"
+              element={<div>You have entered an invalid address</div>}
+            />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       )}
     </div>
   );
