@@ -4,8 +4,8 @@ import {
   formattedTwentyFourHoursPeriodsSelector,
   twentyFourHoursGeneralSelector,
 } from "../../reducers/TwentyFourHoursWeatherForecastReducer";
-import styles from "./Table.module.css";
-import TableGeneral from "../table/TableGeneral"
+import tableStyles from "./Table.module.css";
+import TableGeneral from "../table/TableGeneral";
 
 function TwentyFourHourScreen() {
   const twentyFourHoursGeneral = useSelector(twentyFourHoursGeneralSelector);
@@ -15,8 +15,9 @@ function TwentyFourHourScreen() {
 
   return (
     <div>
-      <TableGeneral generalForecast={twentyFourHoursGeneral}/>
-      <table className={styles.table}>
+      <p>Twenty Four Hours Weather Forecast</p>
+      <TableGeneral generalForecast={twentyFourHoursGeneral} />
+      <table className={tableStyles.table}>
         <thead>
           <tr>
             <th>Date & Time</th>

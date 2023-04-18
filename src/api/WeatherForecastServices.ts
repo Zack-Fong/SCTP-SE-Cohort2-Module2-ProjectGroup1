@@ -92,18 +92,14 @@ export function getFourDaysWeatherForecast() {
         store.dispatch(setFourDaysWeatherForecast({
           items: response.data.items || []
         }));
-        resolve({
-          items: response.data.items || []
-        });
+        resolve(undefined);
       })
       .catch((error) => {
         console.log("Four Days Weather Forecast Error: ", error);
         store.dispatch(setFourDaysWeatherForecast({
           items: []
         }));
-        resolve({
-          items: []
-        });
+        resolve(undefined);
       });
   })
 }

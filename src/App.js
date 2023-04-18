@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Button from "../src/components/button/Button";
-import SampleScreen from "./components/screens/SampleScreen";
 import TwoHourScreen from "./components/screens/TwoHourScreen";
 import FourDayScreen from "./components/screens/FourDayScreen";
 import TwentyFourHourScreen from "./components/screens/TwentyFourHourScreen";
@@ -11,43 +10,55 @@ import {
   getTwoHoursWeatherForecast,
 } from "./api/WeatherForecastServices";
 import "./App.css";
-import { useSelector } from "react-redux";
-import { formattedFourDaysItemsSelector } from "./reducers/FourDaysWeatherForecastReducers";
 
 function App() {
-  const formattedFourDaysItems = useSelector(formattedFourDaysItemsSelector);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getTwoHoursWeatherForecast();
-    getTwentyFourHoursWeatherForecast();
-    getFourDaysWeatherForecast();
+    setLoading(true);
+
+    Promise.allSettled([
+      getTwoHoursWeatherForecast(),
+      getTwentyFourHoursWeatherForecast(),
+      getFourDaysWeatherForecast(),
+    ]).then((promiseAllSettledResults) => {
+      console.log("Promise All Settled results: ", promiseAllSettledResults);
+      setLoading(false);
+    });
   }, []);
-
-  /*Example Usage of fourDaysItemsSelector*/
-  useEffect(() => {
-    console.log("Four Days Items in reducer", formattedFourDaysItems);
-  }, [formattedFourDaysItems]);
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div className="button-container">
-                <Button label="2 Hours" to="/2Hours" />
-                <Button label="24 Hours" to="/24Hours" />
-                <Button label="4 days" to="/4Days" />
-              </div>
-            }
-          />
-          <Route path="/2Hours" element={<TwoHourScreen />} />
-          <Route path="/24Hours" element={<TwentyFourHourScreen />} />
-          <Route path="/4days" element={<FourDayScreen />} />
-          <Route path="*" element={<SampleScreen />} />
-        </Routes>
-      </BrowserRouter>
+      {loading ? (
+        <div className="loader-container">
+          <div className="spinner"></div>
+        </div>
+      ) : (
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <p>Group 1 Weather Forecasts</p>
+                  <div className="button-container">
+                    <Button label="2 Hours" to="/2Hours" />
+                    <Button label="24 Hours" to="/24Hours" />
+                    <Button label="4 days" to="/4Days" />
+                  </div>
+                </>
+              }
+            />
+            <Route path="/2Hours" element={<TwoHourScreen />} />
+            <Route path="/24Hours" element={<TwentyFourHourScreen />} />
+            <Route path="/4days" element={<FourDayScreen />} />
+            <Route
+              path="*"
+              element={<div>You have entered an invalid address</div>}
+            />
+          </Routes>
+        </BrowserRouter>
+      )}
     </div>
   );
 }

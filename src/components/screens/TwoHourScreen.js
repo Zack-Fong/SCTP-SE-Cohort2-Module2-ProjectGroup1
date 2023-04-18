@@ -7,8 +7,7 @@ import {
   twoHoursItemsForecastsSelector,
   twoHoursItemsTimeRangeSelector,
 } from "../../reducers/TwoHoursWeatherForecastReducer";
-import TablePeriod from "../table/TablePeriod";
-import styles from "./Table.module.css";
+import tableStyles from "./Table.module.css";
 
 function TwoHourScreen() {
   const [twoHoursWeatherForecasts, setTwoHoursWeatherForecasts] = useState([]);
@@ -30,6 +29,7 @@ function TwoHourScreen() {
 
   return (
     <div>
+      <p>Two Hours Weather Forecast</p>
       {twoHoursItemsTimeRange && (
         <h2>
           {formatDate(
@@ -39,8 +39,8 @@ function TwoHourScreen() {
           )}
         </h2>
       )}
-      {/* <TablePeriod periodForecast={twoHoursWeatherForecasts}/> */}
-      <table className={`${styles.table} table-dark table-striped`}>
+
+      <table className={`${tableStyles.table} table-dark table-striped`}>
         <thead>
           <tr>
             <th>Name</th>
@@ -54,9 +54,9 @@ function TwoHourScreen() {
             twoHoursWeatherForecasts.map((twoHoursWeatherForecast) => (
               <tr key={uuidv4()}>
                 <td>{twoHoursWeatherForecast.id}</td>
-              <td>{twoHoursWeatherForecast.latitude.toFixed(3)}</td>
-              <td>{twoHoursWeatherForecast.longitude.toFixed(3)}</td>
-              <td>{twoHoursWeatherForecast.forecast}</td>
+                <td>{twoHoursWeatherForecast.latitude.toFixed(3)}</td>
+                <td>{twoHoursWeatherForecast.longitude.toFixed(3)}</td>
+                <td>{twoHoursWeatherForecast.forecast}</td>
               </tr>
             ))}
         </tbody>
