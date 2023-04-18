@@ -3,11 +3,12 @@ import {useSelector} from "react-redux";
 import { getFourDaysWeatherForecast } from "../../api/WeatherForecastServices";
 import styles from "./Table.module.css";
 import TableGeneral from "../table/TableGeneral";
-import { formattedFourDaysItemsSelector} from "../../reducers/FourDaysWeatherForecastReducers";
+import { formattedFourDaysItemsSelector } from "../../reducers/FourDaysWeatherForecastReducers";
 
 function FourDayScreen(){
     const fourDayScreenGeneral = useSelector(formattedFourDaysItemsSelector);
-   const[general, setGeneral] =useState([]);
+    console.log('data', formattedFourDaysItemsSelector);
+    /*const[general, setGeneral] =useState([]);
 
    const fourDayScreenGet = async() => {
         const response = await getFourDaysWeatherForecast();
@@ -54,7 +55,7 @@ function FourDayScreen(){
 
     useEffect(() =>{
         fourDayScreenGet();
-    }, []); 
+    }, []); */
         
 
     return(
@@ -73,35 +74,16 @@ function FourDayScreen(){
             </tr>
             </thead>
             <tbody>
-               
-                <tr> 
-                    <td>{general.date}</td>
-                    <td>{general.temperature_low}:{general.temperature_high}</td>
-                    <td>{general.humidity_low}:{general.humidity_high}</td>
-                    <td>{general.wind_speed_low}:{general.wind_speed_high}</td>
-                    <td>{general.forecast}</td>
-                </tr>
-                <tr> 
-                    <td>{general.date1}</td>
-                    <td>{general.temperature_low1}:{general.temperature_high1}</td>
-                    <td>{general.humidity_low1}:{general.humidity_high1}</td>
-                    <td>{general.wind_speed_low1}:{general.wind_speed_high1}</td>
-                    <td>{general.forecast1}</td>
-                </tr>
-                <tr> 
-                    <td>{general.date2}</td>
-                    <td>{general.temperature_low2}:{general.temperature_high2}</td>
-                    <td>{general.humidity_low2}:{general.humidity_high2}</td>
-                    <td>{general.wind_speed_low2}:{general.wind_speed_high2}</td>
-                    <td>{general.forecast2}</td>
-                </tr>
-                <tr> 
-                    <td>{general.date3}</td>
-                    <td>{general.temperature_low3}:{general.temperature_high3}</td>
-                    <td>{general.humidity_low3}:{general.humidity_high3}</td>
-                    <td>{general.wind_speed_low3}:{general.wind_speed_high3}</td>
-                    <td>{general.forecast3}</td>
-                </tr>
+                {fourDayScreenGeneral &&
+                    fourDayScreenGeneral.map((item) => (
+               <tr key ={item}>
+                <th>{item.date}</th>
+                <th>{item.temperature_low}: {item.temperature_high}</th>
+                <th>{item.relative_humidity_low}: {item.relative_humidity_high}</th>
+                <th>{item.wind_speed_low}: {item.wind_speed_high}</th>
+                <th>{item.forecast}</th>
+               </tr>
+                    ))}
             </tbody>
         </table>
     </div>
