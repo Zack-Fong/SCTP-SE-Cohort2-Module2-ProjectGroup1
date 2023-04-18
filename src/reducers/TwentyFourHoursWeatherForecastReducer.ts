@@ -26,7 +26,7 @@ const itemsState = (state: any) => {
 export const twentyFourHoursItemsSelector = createSelector(itemsState, (twentyFourHoursItemsList) => twentyFourHoursItemsList);
 export const twentyFourHoursGeneralSelector = createSelector(itemsState, (twentyFourHoursItemsList) => {
     const generalItem = twentyFourHoursItemsList && twentyFourHoursItemsList[0]?.general;
-    return {
+    return [{
         forecast: generalItem?.forecast,
         relative_humidity_low: generalItem?.relative_humidity.low,
         relative_humidity_high: generalItem?.relative_humidity.high,
@@ -35,7 +35,7 @@ export const twentyFourHoursGeneralSelector = createSelector(itemsState, (twenty
         wind_speed_low: generalItem?.wind.speed.low,
         wind_speed_high: generalItem?.wind.speed.high,
         wind_direction: generalItem?.wind.direction,
-    }
+    }]
 })
 export const formattedTwentyFourHoursPeriodsSelector = createSelector(itemsState, (twentyFourHoursItemsList) => {
     const formattedTwentyFourHoursPeriods = twentyFourHoursItemsList && twentyFourHoursItemsList[0]?.periods?.map((period: PeriodType) => {

@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
 import { formatDate } from "../../common/common";
 import {
   formattedTwoHoursAreaMetadataSelector,
   twoHoursItemsForecastsSelector,
   twoHoursItemsTimeRangeSelector,
 } from "../../reducers/TwoHoursWeatherForecastReducer";
-import tableStyles from "./Table.module.css";
+import TablePeriod from "../table/TablePeriod";
 
 function TwoHourScreen() {
   const [twoHoursWeatherForecasts, setTwoHoursWeatherForecasts] = useState([]);
@@ -16,6 +15,7 @@ function TwoHourScreen() {
   );
   const twoHoursItemsForecasts = useSelector(twoHoursItemsForecastsSelector);
   const twoHoursItemsTimeRange = useSelector(twoHoursItemsTimeRangeSelector);
+  const twoHourHeaders = ["Location", "Latitude", "Longitude", "Forecast"];
 
   useEffect(() => {
     const twoHoursForecasts = formattedTwoHoursAreaMetadata.map(
@@ -40,27 +40,10 @@ function TwoHourScreen() {
         </h2>
       )}
 
-      <table className={`${tableStyles.table} table-dark table-striped`}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
-            <th>Forecast</th>
-          </tr>
-        </thead>
-        <tbody>
-          {twoHoursWeatherForecasts &&
-            twoHoursWeatherForecasts.map((twoHoursWeatherForecast) => (
-              <tr key={uuidv4()}>
-                <td>{twoHoursWeatherForecast.id}</td>
-                <td>{twoHoursWeatherForecast.latitude.toFixed(3)}</td>
-                <td>{twoHoursWeatherForecast.longitude.toFixed(3)}</td>
-                <td>{twoHoursWeatherForecast.forecast}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+      <TablePeriod
+        periodForecast={twoHoursWeatherForecasts}
+        periodHeaders={twoHourHeaders}
+      />
     </div>
   );
 }
