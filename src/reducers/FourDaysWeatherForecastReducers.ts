@@ -1,5 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { ACTION_NAMES } from "../common/constants";
+import { formatDateFourDay } from "../common/common";
 
 const defaultFourDaysWeatherForecastState: FourDaysWeatherForecastsPayloadType = {
     items: [],
@@ -42,7 +43,7 @@ export const formattedFourDaysItemsSelector = createSelector(itemsState, (fourDa
         );
 
         return ({
-            date: forecast?.date,
+            date: forecast?.date ? formatDateFourDay(forecast?.date) : "",
             forecast: forecast?.forecast,
             relative_humidity_low: forecast?.relative_humidity.low,
             relative_humidity_high: forecast?.relative_humidity.high,
