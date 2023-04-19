@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { formattedFourDaysItemsSelector } from "../../reducers/FourDaysWeatherForecastReducers";
 import tableStyles from "./Table.module.css";
+import { formatDateFourDay } from "../../common/common";
 
 function FourDayScreen() {
   const formattedFourDaysItems = useSelector(formattedFourDaysItemsSelector);
@@ -23,7 +24,7 @@ function FourDayScreen() {
           {formattedFourDaysItems &&
             formattedFourDaysItems.map((formattedFourDaysItem) => (
               <tr key={uuidv4()}>
-                <th>{formattedFourDaysItem.date}</th>
+                <th>{formatDateFourDay(formattedFourDaysItem.date)}</th>
                 <th>
                   {formattedFourDaysItem.temperature_low}:{" "}
                   {formattedFourDaysItem.temperature_high}

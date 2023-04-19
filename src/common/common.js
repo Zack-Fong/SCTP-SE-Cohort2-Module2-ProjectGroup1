@@ -85,3 +85,9 @@ export function formatDate(dateString) {
 
   return `Date: ${startDateString} | Time: ${startTimeString} - ${endTimeString} (24hours)`;
 }
+
+export function formatDateFourDay(dateString) {
+  const date = new Date(dateString);
+  const options = { day: "2-digit", month: "long", year: "numeric" };
+  return date.toLocaleDateString("en-GB", options);
+}
