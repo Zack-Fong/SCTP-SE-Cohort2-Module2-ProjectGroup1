@@ -1,10 +1,14 @@
 body {
+  height: 100vh;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(https://img.freepik.com/free-photo/fantastic-blue-sky_1203-1929.jpg?w=900&t=st=1681958368~exp=1681958968~hmac=3600662117b88fa1fb8f95870722b20da52d34f236892dc1a673763bb4082464);
+  background-position: center;
+  background-size: cover;
 }
 
 code {
